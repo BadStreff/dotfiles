@@ -1,3 +1,6 @@
+let g:python_host_prog = '/Users/afurbee/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/afurbee/.pyenv/versions/neovim3/bin/python'
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -10,7 +13,13 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'nightsense/seabird'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
+Plug 'ervandew/supertab'
 call plug#end()
+
+" enable deoplete (prereq for jedi-vim)
+call deoplete#enable()
 
 " map leader to comma
 let mapleader = ","
