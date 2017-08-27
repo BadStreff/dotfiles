@@ -1,5 +1,5 @@
-let g:python_host_prog = '/Users/afurbee/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/afurbee/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = $HOME.'/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = $HOME.'/.pyenv/versions/neovim3/bin/python'
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
