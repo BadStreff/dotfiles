@@ -10,7 +10,7 @@
 ![vim-plug](https://raw.githubusercontent.com/junegunn/i/master/vim-plug/installer.gif)
 
 * Install the [Powerline-patched fonts](https://github.com/powerline/fonts)
-  * I currently have the .vimrc pointed to [Robot Mono for Powerline](https://github.com/powerline/fonts/blob/master/RobotoMono/Roboto%20Mono%20for%20Powerline.ttf) [Here](https://github.com/acidjazz/dotfiles/blob/master/.vimrc#L143)
+  * I currently have the init.vim pointed to [Meslo Slashed for Powerline](https://github.com/powerline/fonts/blob/master/Meslo%20Slashed/Meslo%20LG%20S%20Regular%20for%20Powerline.ttf)
 
 ## Configuration
 
