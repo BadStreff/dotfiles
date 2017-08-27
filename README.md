@@ -20,7 +20,7 @@
 * Install [pyenv](https://github.com/pyenv/pyenv) and [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
 
 * Configure neovim to worth with python2 and python3
- * https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
+  * https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
 
 ## Configuration
 
