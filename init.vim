@@ -16,6 +16,7 @@ Plug 'nightsense/seabird'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'ervandew/supertab'
+Plug 'tmhedberg/SimpylFold' " No-BS Python code folding for Vim
 call plug#end()
 
 " enable deoplete (prereq for jedi-vim)
@@ -65,6 +66,16 @@ nnoremap <C-H> <C-W><C-H>
 " fast buffer switching binds from vim-unimpaired
 map [b :bprevious<CR>
 map ]b :bnext<CR>
+
+" Disable jedi preview window
+autocmd FileType python setlocal completeopt-=preview
+
+" Configure Supertab to cyle down a list instead of starting at the bottom
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" Configure vim-multiple-cursors to exit back to normal mode from insert when
+" esc is pressed
+let g:multi_cursor_exit_from_insert_mode=0
 
 " bind <space> for folding/unfolding a line
 nnoremap <Space> za
