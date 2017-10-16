@@ -32,6 +32,9 @@ set number
 set termguicolors
 colorscheme greygull
 
+" enter again to stop highlighting searches
+nnoremap <CR> :nohlsearch<CR><CR>
+
 " Configure python settings
 let python_highlight_all=1
 syntax on
