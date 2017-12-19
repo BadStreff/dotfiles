@@ -6,6 +6,7 @@ filetype off                  " required
 
 call plug#begin()
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-repeat'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
@@ -17,6 +18,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'ervandew/supertab'
 Plug 'tmhedberg/SimpylFold' " No-BS Python code folding for Vim
+" Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " enable deoplete (prereq for jedi-vim)
@@ -28,9 +30,12 @@ let mapleader = ","
 " show line number on cursor
 set number
 
+" disable line wrapping
+set nowrap
+
 " Configure colorscheme
 set termguicolors
-colorscheme greygull
+colorscheme stormpetrel
 
 " enter again to stop highlighting searches
 nnoremap <CR> :nohlsearch<CR><CR>
@@ -43,17 +48,20 @@ syntax on
 " sping_night theme needs installed along with the Meslo powerline font
 set laststatus=2
 set ttimeoutlen=50
-set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h12
+" set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h12
+" set guifont=DroidSansMono_Nerd_Font:h11
+set guifont=Hack:H13
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'light'
 
 " configure NERDTree
+let NERDTreeShowHidden = 1
 autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * wincmd p
-map <C-n> :NERDTreeToggle<CR>
+" map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " configure vsplit to be more natural
@@ -99,3 +107,9 @@ set mouse=a
 set nobackup
 set nowritebackup
 set noswapfile
+
+" au BufNewFile,BufRead *.plist set filetype=xml
+" au BufNewFile,BufRead *.plist,*.xml,*.htm,*.html so ~/.config/nvim/syntax/xml.vim
+
+set encoding=utf8
+
