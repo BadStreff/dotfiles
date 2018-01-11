@@ -1,3 +1,8 @@
+if has("mac")
+    let g:python_host_prog = $HOME.'/.pyenv/versions/neovim2/bin/python'
+    let g:python3_host_prog = $HOME.'/.pyenv/versions/neovim3/bin/python'
+endif
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -50,7 +55,7 @@ syntax on
 " configure airline
 set laststatus=2
 set ttimeoutlen=50
-set guifont=Hack:H13
+" set guifont=Hack:H13
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'seagull'
