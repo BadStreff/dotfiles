@@ -1,24 +1,28 @@
-let g:python_host_prog = $HOME.'/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = $HOME.'/.pyenv/versions/neovim3/bin/python'
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 call plug#begin()
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-repeat'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-surround'
+" prettify vim
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'flazz/vim-colorschemes'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'nightsense/seabird'
+Plug 'ryanoasis/vim-devicons'
+
+" additional functionality
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'scrooloose/nerdtree'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'ervandew/supertab'
+
+" python plugins
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
-Plug 'ervandew/supertab'
 Plug 'tmhedberg/SimpylFold' " No-BS Python code folding for Vim
-" Plug 'ryanoasis/vim-devicons'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 " enable deoplete (prereq for jedi-vim)
@@ -40,20 +44,16 @@ colorscheme stormpetrel
 " enter again to stop highlighting searches
 nnoremap <CR> :nohlsearch<CR><CR>
 
-" Configure python settings
-let python_highlight_all=1
+" enable syntax highlighting
 syntax on
 
 " configure airline
-" sping_night theme needs installed along with the Meslo powerline font
 set laststatus=2
 set ttimeoutlen=50
-" set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h12
-" set guifont=DroidSansMono_Nerd_Font:h11
 set guifont=Hack:H13
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'light'
+let g:airline_theme = 'seagull'
 
 " configure NERDTree
 let NERDTreeShowHidden = 1
@@ -61,8 +61,12 @@ autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * wincmd p
-" map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" configure Syntastic
+let g:syntastic_python_checkers = ['flake8', 'pylint']
+let g:syntastic_python_pylint_args = "--disable=missing-docstring"
+let g:syntastic_aggregate_errors = 1
 
 " configure vsplit to be more natural
 set splitright
@@ -73,10 +77,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-" fast buffer switching binds from vim-unimpaired
-map [b :bprevious<CR>
-map ]b :bnext<CR>
 
 " Disable jedi preview window
 autocmd FileType python setlocal completeopt-=preview
@@ -107,9 +107,6 @@ set mouse=a
 set nobackup
 set nowritebackup
 set noswapfile
-
-" au BufNewFile,BufRead *.plist set filetype=xml
-" au BufNewFile,BufRead *.plist,*.xml,*.htm,*.html so ~/.config/nvim/syntax/xml.vim
 
 set encoding=utf8
 
