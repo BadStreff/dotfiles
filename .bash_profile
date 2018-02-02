@@ -17,7 +17,7 @@ reset=$(tput sgr0)
 
 
 function _update_ps1() {
-    PS1="$(/Users/ajf023/.pyenv/versions/3.6.3/bin/powerline-shell $?)"
+    PS1="$(/Users/afurbee/.pyenv/versions/3.6.4/bin/powerline-shell $?)"
 }
 
 if [ "$TERM" != "linux" ]; then
