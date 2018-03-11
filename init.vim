@@ -55,7 +55,6 @@ syntax on
 " configure airline
 set laststatus=2
 set ttimeoutlen=50
-" set guifont=Hack:H13
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'seagull'
@@ -69,7 +68,7 @@ autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " configure Syntastic
-let g:syntastic_python_checkers = ['flake8', 'pylint']
+let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_python_pylint_args = "--disable=missing-docstring"
 let g:syntastic_aggregate_errors = 1
 
