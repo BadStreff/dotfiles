@@ -1,8 +1,3 @@
-if has("mac")
-    let g:python_host_prog = $HOME.'/.pyenv/versions/neovim2/bin/python'
-    let g:python3_host_prog = $HOME.'/.pyenv/versions/neovim3/bin/python'
-endif
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -28,7 +23,17 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'tmhedberg/SimpylFold' " No-BS Python code folding for Vim
 Plug 'vim-syntastic/syntastic'
+
+" powershell plugins
+Plug 'pprovost/vim-ps1'
+
+" xml,plist plugins
 call plug#end()
+
+if has("mac")
+    let g:python_host_prog = $HOME.'/.pyenv/versions/neovim2/bin/python'
+    let g:python3_host_prog = $HOME.'/.pyenv/versions/neovim3/bin/python'
+endif
 
 " enable deoplete (prereq for jedi-vim)
 call deoplete#enable()

@@ -12,10 +12,11 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 pyenv install 2.7.14
-pyenv install 3.6.3
+pyenv install 3.6.4
+pyenv global 3.6.4
 
 pyenv virtualenv 2.7.14 neovim2
-pyenv virtualenv 3.6.3 neovim3
+pyenv virtualenv 3.6.4 neovim3
 
 # these sections may need done by hand
 pyenv activate neovim2
@@ -28,4 +29,7 @@ pyenv deactivate
 ln -s "$SCRIPTPATH/.bash_profile" ~/
 ln -s "$SCRIPTPATH/.gitconfig" ~/
 ln -s "$SCRIPTPATH/.git-prompt.sh" ~/
-ln -s "$SCRIPTPATH/.git-completion.bash" ~/
+
+mkdir ~/.config
+mkdir ~/.config/nvim
+ln -s "$SCRIPTPATH/.init.vim" ~/.config/nvim/

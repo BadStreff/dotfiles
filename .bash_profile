@@ -1,6 +1,6 @@
-if [ -f ~/.git-completion.bash ]; then
-    . ~/.git-completion.bash
-fi
+# if [ -f ~/.git-completion.bash ]; then
+#     . ~/.git-completion.bash
+# fi
 
 green=$(tput setaf 2)
 blue=$(tput setaf 4)
@@ -8,10 +8,20 @@ bold=$(tput bold)
 red=$(tput setaf 1)
 reset=$(tput sgr0)
 
-if [ -f ~/.git-prompt.sh ]; then
-  source ~/.git-prompt.sh
-  GIT_PS1_SHOWDIRTYSTATE=true
-  export PS1='\u@\h \w\[$blue\]$(__git_ps1)\[$reset\]\$ '
+# if [ -f ~/.git-prompt.sh ]; then
+#   source ~/.git-prompt.sh
+#   GIT_PS1_SHOWDIRTYSTATE=true
+#   export PS1='\u@\h \w\[$blue\]$(__git_ps1)\[$reset\]\$ '
+# fi
+
+
+
+function _update_ps1() {
+    PS1="$(/Users/afurbee/.pyenv/versions/3.6.4/bin/powerline-shell $?)"
+}
+
+if [ "$TERM" != "linux" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
 # Setting PATH for Python 2.7
