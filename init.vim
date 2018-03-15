@@ -27,16 +27,18 @@ Plug 'vim-syntastic/syntastic'
 " powershell plugins
 Plug 'pprovost/vim-ps1'
 
-" xml,plist plugins
-call plug#end()
+" ansible plugins
+Plug 'pearofducks/ansible-vim'
 
-if has("mac")
-    let g:python_host_prog = $HOME.'/.pyenv/versions/neovim2/bin/python'
-    let g:python3_host_prog = $HOME.'/.pyenv/versions/neovim3/bin/python'
-endif
+call plug#end()
 
 " enable deoplete (prereq for jedi-vim)
 call deoplete#enable()
+
+
+" enable ansible for yml files
+au BufNewFile,BufRead *.yml set filetype=ansible
+
 
 " map leader to comma
 let mapleader = ","

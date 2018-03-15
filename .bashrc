@@ -5,13 +5,26 @@ if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
+export TERM="screen-256color"
+
+if command -v nvim>/dev/null; then
+  alias vi="/usr/bin/nvim"
+  alias vim="/usr/bin/nvim"
+fi
+
+if command -v tmux>/dev/null; then
+  [[ ! $TERM == screen ]] && [ -z $TMUX ] && exec tmux
+fi
 
 # User specific aliases and functions
-eval "$(pipenv --completion)"
+if command -v pipenv>/dev/null; then
+  eval "$(pipenv --completion)"
+fi
 
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-. ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+
+if command -v powerline>/dev/null; then
+  powerline-daemon -q
+  POWERLINE_BASH_CONTINUATION=1
+  POWERLINE_BASH_SELECT=1
+  . ~/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+fi

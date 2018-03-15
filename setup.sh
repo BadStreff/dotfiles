@@ -20,7 +20,7 @@ ln -s "$SCRIPTPATH/.bashrc" ~/
 ln -s "$SCRIPTPATH/.gitconfig" ~/
 ln -s "$SCRIPTPATH/.tmux.conf" ~/
 mkdir -p ~/.config/nvim
-ln -s "$SCRIPTPATH/.init.vim" ~/.config/nvim/
+ln -s "$SCRIPTPATH/init.vim" ~/.config/nvim/
 
 # register fonts
 fc-cache
