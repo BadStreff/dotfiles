@@ -1,35 +1,26 @@
 #!/bin/bash
 
+# Required packages
+# python
+# python3
+# tmux
+# powerline (pip install --user powerline-status)
+
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-brew install pyenv pyenv-virtualenv neovim
-brew tap caskroom/fonts
-brew cask install font-hack-nerd-font
-
+# Install vim-plug
+echo "Installing vim plug..."
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-pyenv install 2.7.14
-pyenv install 3.6.4
-pyenv global 3.6.4
-
-pyenv virtualenv 2.7.14 neovim2
-pyenv virtualenv 3.6.4 neovim3
-
-# these sections may need done by hand
-pyenv activate neovim2
-pip install neovim
-pyenv activate neovim3
-pip install neovim
-
-pyenv deactivate
-
-ln -s "$SCRIPTPATH/.bash_profile" ~/
+# Setup symlinks
+echo "Creating symlinks"
+ln -s "$SCRIPTPATH/.fonts" ~/
+ln -s "$SCRIPTPATH/.bashrc" ~/
 ln -s "$SCRIPTPATH/.gitconfig" ~/
-ln -s "$SCRIPTPATH/.git-prompt.sh" ~/
-
-mkdir ~/.config
-mkdir ~/.config/nvim
+ln -s "$SCRIPTPATH/.tmux.conf" ~/
+mkdir -p ~/.config/nvim
 ln -s "$SCRIPTPATH/.init.vim" ~/.config/nvim/
+
+# register fonts
+fc-cache

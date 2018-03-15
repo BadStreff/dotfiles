@@ -2,7 +2,7 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+  . /etc/bashrc
 fi
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
@@ -11,12 +11,7 @@ fi
 # User specific aliases and functions
 eval "$(pipenv --completion)"
 
-# powerline-shell
-function _update_ps1() {
-    PS1="$(powerline-shell $?)"
-}
-
-if [ "$TERM" != "linux" ]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
-
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
