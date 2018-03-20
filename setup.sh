@@ -19,8 +19,12 @@ ln -s "$SCRIPTPATH/.fonts" ~/
 ln -s "$SCRIPTPATH/.bashrc" ~/
 ln -s "$SCRIPTPATH/.gitconfig" ~/
 ln -s "$SCRIPTPATH/.tmux.conf" ~/
+
 mkdir -p ~/.config/nvim
 ln -s "$SCRIPTPATH/init.vim" ~/.config/nvim/
+
+mkdir -p ~/.config/powerline
+ln -s "$SCRIPTPATH/powerline/config.json" ~/.config/powerline/
 
 # register fonts
 fc-cache
