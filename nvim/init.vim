@@ -7,6 +7,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'nightsense/seabird'
 Plug 'ryanoasis/vim-devicons'
+Plug 'airblade/vim-gitgutter'
 
 " additional functionality
 Plug 'tpope/vim-sensible'
@@ -22,7 +23,9 @@ Plug 'ervandew/supertab'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'tmhedberg/SimpylFold' " No-BS Python code folding for Vim
-Plug 'vim-syntastic/syntastic'
+
+" code linting
+Plug 'w0rp/ale'
 
 " powershell plugins
 Plug 'pprovost/vim-ps1'
@@ -73,11 +76,6 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" configure Syntastic
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_pylint_args = "--disable=missing-docstring"
-let g:syntastic_aggregate_errors = 1
 
 " configure vsplit to be more natural
 set splitright
