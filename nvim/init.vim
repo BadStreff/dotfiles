@@ -118,4 +118,3 @@ set nowritebackup
 set noswapfile
 
 set encoding=utf8
-
