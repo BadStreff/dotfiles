@@ -24,6 +24,9 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'tmhedberg/SimpylFold' " No-BS Python code folding for Vim
 
+" go plugin
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 " code linting
 Plug 'w0rp/ale'
 
