@@ -5,8 +5,6 @@ if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
-export TERM="screen-256color"
-
 if command -v nvim>/dev/null; then
   alias vi="/usr/bin/nvim"
   alias vim="/usr/bin/nvim"
@@ -20,7 +18,6 @@ fi
 if command -v pipenv>/dev/null; then
   eval "$(pipenv --completion)"
 fi
-
 
 if command -v powerline>/dev/null; then
   powerline-daemon -q
