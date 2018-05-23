@@ -22,6 +22,7 @@ Plug 'ervandew/supertab'
 " python plugins
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-go'
 Plug 'tmhedberg/SimpylFold' " No-BS Python code folding for Vim
 
 " go plugin
@@ -41,10 +42,11 @@ call plug#end()
 " enable deoplete (prereq for jedi-vim)
 call deoplete#enable()
 
-
 " enable ansible for yml files
 au BufNewFile,BufRead *.yml set filetype=ansible
 
+" format tabs in go
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
 
 " map leader to comma
 let mapleader = ","
@@ -121,3 +123,21 @@ set nowritebackup
 set noswapfile
 
 set encoding=utf8
+
+" Disable Deoplete when selecting multiple cursors starts
+function! Multiple_cursors_before()
+    if exists('*deoplete#disable')
+        exe 'call deoplete#disable()'
+    elseif exists(':NeoCompleteLock') == 2
+        exe 'NeoCompleteLock'
+    endif
+endfunction
+
+" Enable Deoplete when selecting multiple cursors ends
+function! Multiple_cursors_after()
+    if exists('*deoplete#toggle')
+        exe 'call deoplete#toggle()'
+    elseif exists(':NeoCompleteUnlock') == 2
+        exe 'NeoCompleteUnlock'
+    endif
+endfunction
