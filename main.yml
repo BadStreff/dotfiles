@@ -1,0 +1,15 @@
+---
+- name: Configure Localhost Baseline
+  hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+    - name: Install Packages
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - tmux
+        - git
+        - neovim
+        - pyenv
