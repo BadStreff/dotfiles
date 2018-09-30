@@ -21,12 +21,12 @@ Plug 'ervandew/supertab'
 
 " python plugins
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
-Plug 'zchee/deoplete-go'
 Plug 'tmhedberg/SimpylFold' " No-BS Python code folding for Vim
+Plug 'zchee/deoplete-jedi'
 
-" go plugin
+" go plugins
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'zchee/deoplete-go'
 
 " code linting
 Plug 'w0rp/ale'
@@ -40,7 +40,7 @@ Plug 'pearofducks/ansible-vim'
 call plug#end()
 
 " enable deoplete (prereq for jedi-vim)
-call deoplete#enable()
+silent! call deoplete#enable()
 
 " enable ansible for yml files
 au BufNewFile,BufRead *.yml set filetype=ansible
@@ -59,7 +59,7 @@ set nowrap
 
 " Configure colorscheme
 set termguicolors
-colorscheme stormpetrel
+silent! colorscheme stormpetrel
 
 " enter again to stop highlighting searches
 nnoremap <CR> :nohlsearch<CR><CR>
