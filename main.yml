@@ -30,6 +30,18 @@
         - powerline-status
         - pre-commit
       become_user: "{{ username }}"
+    - name: create directory structure
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: 0755
+      with_items:
+        - "{{ home_dir }}/.fonts"
+        - "{{ home_dir }}/.config/nvim"
+        - "{{ home_dir }}/.config/powerline"
+        - "{{ home_dir }}/.config/nvim/plugged"
+        - "{{ home_dir }}/.local/share/nvim/site/autoload"
+        - "{{ home_dir }}/.local/share/konsole"
     - name: install fonts
       copy:
         src: "{{ item }}"
@@ -37,16 +49,6 @@
       with_fileglob:
         - .fonts/*
       notify: register fonts
-    - name: create directory structure
-      file:
-        path: "{{ item }}"
-        state: directory
-        mode: 0777
-      with_items:
-        - "{{ home_dir }}/.config/nvim"
-        - "{{ home_dir }}/.config/powerline"
-        - "{{ home_dir }}/.config/nvim/plugged"
-        - "{{ home_dir }}/.local/share/nvim/site/autoload"
     - name: setup symlinks
       file:
         src: "{{ item.src }}"
