@@ -95,6 +95,9 @@ nnoremap <C-H> <C-W><C-H>
 " Disable jedi preview window
 autocmd FileType python setlocal completeopt-=preview
 
+" disable go warning for older nvim verions
+let g:go_version_warning = 0
+
 " Configure Supertab to cyle down a list instead of starting at the bottom
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
