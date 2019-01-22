@@ -5,7 +5,7 @@ call plug#begin()
 " prettify vim
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'nightsense/seabird'
+Plug 'patstockwell/vim-monokai-tasty'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 
@@ -18,6 +18,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ervandew/supertab'
+
+" LanguageTool Plugin for Documentation
+Plug 'dpelle/vim-LanguageTool'
 
 " python plugins
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -43,10 +46,13 @@ call plug#end()
 silent! call deoplete#enable()
 
 " enable ansible for yml files
-au BufNewFile,BufRead *.yml set filetype=ansible
+au BufNewFile,BufRead *.yml set filetype=yaml.ansible
 
 " format tabs in go
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
+
+" Enable Spell Checking for Mark Down
+autocmd BufRead,BufNewFile *.md setlocal spell
 
 " map leader to comma
 let mapleader = ","
@@ -57,9 +63,16 @@ set number
 " disable line wrapping
 set nowrap
 
-" Configure colorscheme
+" configure colorscheme and airline
 set termguicolors
-silent! colorscheme stormpetrel
+let g:vim_monokai_tasty_italic = 1
+silent! colorscheme vim-monokai-tasty
+" airline
+let g:airline_theme='monokai_tasty'
+set laststatus=2
+set ttimeoutlen=50
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " enter again to stop highlighting searches
 nnoremap <CR> :nohlsearch<CR><CR>
@@ -67,12 +80,6 @@ nnoremap <CR> :nohlsearch<CR><CR>
 " enable syntax highlighting
 syntax on
 
-" configure airline
-set laststatus=2
-set ttimeoutlen=50
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'seagull'
 
 " configure NERDTree
 let NERDTreeShowHidden = 1

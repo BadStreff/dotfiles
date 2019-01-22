@@ -2,14 +2,21 @@
 - name: Configure Localhost Baseline
   hosts: localhost
   connection: local
-  become: yes
+  become: true
   vars:
     home_dir: "{{ lookup('env', 'HOME') }}"
     username: "{{ lookup('env', 'USER') }}"
+    nvim_version: "v0.3.4"
   handlers:
     - name: register fonts
       command: fc-cache
   tasks:
+    - name: install nvim {{ nvim_version }}
+      get_url:
+        url: "https://github.com/neovim/neovim/releases/download/{{ nvim_version }}/nvim.appimage"
+        dest: "{{ home_dir }}/.local/bin/nvim"
+        owner: "{{ username }}"
+        mode: 0755
     - name: install Packages
       package:
         name: "{{ item }}"
@@ -17,7 +24,6 @@
       with_items:
         - tmux
         - git
-        - neovim
         - python3
     - name: install python packages
       pip:
@@ -30,6 +36,7 @@
         - powerline-status
         - pre-commit
       become_user: "{{ username }}"
+      become: true
     - name: create directory structure
       file:
         path: "{{ item }}"
@@ -54,7 +61,7 @@
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
         state: link
-        force: yes
+        force: true
       with_items:
         - { src: "{{ playbook_dir }}/files/nvim/init.vim", dest: "{{ home_dir }}/.config/nvim/init.vim" }
         - { src: "{{ playbook_dir }}/files/nvim/ftplugin", dest: "{{ home_dir }}/.config/nvim/ftplugin" }
@@ -70,5 +77,5 @@
         mode: 0644
     - name: install vim-plug plugins
       command: nvim +PlugInstall +qall
-      become: yes
       become_user: "{{ username }}"
+      become: true

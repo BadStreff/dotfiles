@@ -5,10 +5,14 @@ if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export EDITOR=~/.local/bin/nvim
+
 # setup nvim aliases
 if command -v nvim>/dev/null; then
-  alias vi="/usr/bin/nvim"
-  alias vim="/usr/bin/nvim"
+  alias vi="~/.local/bin/nvim"
+  alias vim="~/.local/bin/nvim"
 fi
 
 # start powerline-daemon if it exists, needed for tmux
