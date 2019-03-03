@@ -26,7 +26,7 @@ Plug 'pearofducks/ansible-vim'
 Plug 'w0rp/ale' " linting
 call plug#end()
 
-" enable deoplete
+" deoplete enable
 silent! call deoplete#enable()
 
 " ftplugins
