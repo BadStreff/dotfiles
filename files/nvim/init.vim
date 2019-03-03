@@ -1,6 +1,3 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
 call plug#begin()
 " prettify vim
 Plug 'vim-airline/vim-airline'
@@ -19,69 +16,63 @@ Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ervandew/supertab'
 
-" LanguageTool Plugin for Documentation
-Plug 'dpelle/vim-LanguageTool'
-
-" python plugins
+" language plugins
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'tmhedberg/SimpylFold' " No-BS Python code folding for Vim
 Plug 'zchee/deoplete-jedi'
-
-" go plugins
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'zchee/deoplete-go'
-
-" code linting
-Plug 'w0rp/ale'
-
-" powershell plugins
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'pprovost/vim-ps1'
-
-" ansible plugins
 Plug 'pearofducks/ansible-vim'
-
+Plug 'w0rp/ale' " linting
 call plug#end()
 
-" enable deoplete (prereq for jedi-vim)
+" enable deoplete
 silent! call deoplete#enable()
 
-" enable ansible for yml files
+" ftplugins
 au BufNewFile,BufRead *.yml set filetype=yaml.ansible
 
-" format tabs in go
-autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
-
-" Enable Spell Checking for Mark Down
-autocmd BufRead,BufNewFile *.md setlocal spell
-
-" map leader to comma
+" bindings
 let mapleader = ","
+nnoremap <CR> :nohlsearch<CR><CR>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <Space> za
+nnoremap <leader>l :ls<CR>:b<space>
 
-" show line number on cursor
-set number
-
-" disable line wrapping
-set nowrap
-
-" configure colorscheme and airline
+" global settings
+syntax on                      " enable syntax highlighting
+set nocompatible               " be improved
+set number                     " show line numbers
+set nowrap                     " disable line wrapping
+set backspace=indent,eol,start " configure backspace to work correctly in insert mode
+set clipboard+=unnamedplus     " use system clipboard
+set mouse=a                    " enable mousewheel scrolling
 set termguicolors
-let g:vim_monokai_tasty_italic = 1
-silent! colorscheme vim-monokai-tasty
-" airline
-let g:airline_theme='monokai_tasty'
 set laststatus=2
 set ttimeoutlen=50
+set splitright
+set splitbelow
+set hidden
+set nobackup
+set nowritebackup
+set noswapfile
+set encoding=utf8
+set expandtab
+set tabstop=2
+set shiftwidth=2
+filetype off
+
+" airline and colorscheme settings
+silent! colorscheme vim-monokai-tasty
+let g:vim_monokai_tasty_italic = 1
+let g:airline_theme='monokai_tasty'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-" enter again to stop highlighting searches
-nnoremap <CR> :nohlsearch<CR><CR>
-
-" enable syntax highlighting
-syntax on
-
-
-" configure NERDTree
+" NERDTree
 let NERDTreeShowHidden = 1
 autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
@@ -89,52 +80,11 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" configure vsplit to be more natural
-set splitright
-set splitbelow
-
-" split navigations shortcuts
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" Disable jedi preview window
-autocmd FileType python setlocal completeopt-=preview
-
-" disable go warning for older nvim verions
-let g:go_version_warning = 0
-
-" Configure Supertab to cyle down a list instead of starting at the bottom
+" supertab settings
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
-" Configure vim-multiple-cursors to exit back to normal mode from insert when
-" esc is pressed
+" vim-multiple-cursors settings
 let g:multi_cursor_exit_from_insert_mode=0
-
-" bind <space> for folding/unfolding a line
-nnoremap <Space> za
-
-" bind for quickly switching between buffers
-nnoremap <leader>l :ls<CR>:b<space>
-
-" keep buffers open
-set hidden
-
-" configure backspace to work correctly in insert mode
-set backspace=indent,eol,start
-
-" enable mousewheel scrolling
-set mouse=a
-
-" I HAVE HAD ENOUGH OF THESE F*CKING SWAP FILES
-set nobackup
-set nowritebackup
-set noswapfile
-
-set encoding=utf8
-
-" Disable Deoplete when selecting multiple cursors starts
 function! Multiple_cursors_before()
     if exists('*deoplete#disable')
         exe 'call deoplete#disable()'
@@ -142,8 +92,6 @@ function! Multiple_cursors_before()
         exe 'NeoCompleteLock'
     endif
 endfunction
-
-" Enable Deoplete when selecting multiple cursors ends
 function! Multiple_cursors_after()
     if exists('*deoplete#toggle')
         exe 'call deoplete#toggle()'
