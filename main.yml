@@ -63,13 +63,13 @@
         state: link
         force: true
       with_items:
-        - { src: "{{ playbook_dir }}/files/nvim/init.vim", dest: "{{ home_dir }}/.config/nvim/init.vim" }
-        - { src: "{{ playbook_dir }}/files/nvim/ftplugin", dest: "{{ home_dir }}/.config/nvim/ftplugin" }
-        - { src: "{{ playbook_dir }}/files/.bashrc", dest: "{{ home_dir }}/.bashrc" }
-        - { src: "{{ playbook_dir }}/files/.tmux.conf", dest: "{{ home_dir }}/.tmux.conf" }
-        - { src: "{{ playbook_dir }}/files/powerline/config.json", dest: "{{ home_dir }}/.config/powerline/config.json" }
-        - { src: "{{ playbook_dir }}/files/konsole/konsolerc", dest: "{{ home_dir }}/.config/konsolerc" }
-        - { src: "{{ playbook_dir }}/files/konsole/main.profile", dest: "{{ home_dir }}/.local/share/konsole/main.profile" }
+        - {src: "{{ playbook_dir }}/files/nvim/init.vim", dest: "{{ home_dir }}/.config/nvim/init.vim"}
+        - {src: "{{ playbook_dir }}/files/nvim/ftplugin", dest: "{{ home_dir }}/.config/nvim/ftplugin"}
+        - {src: "{{ playbook_dir }}/files/.bashrc", dest: "{{ home_dir }}/.bashrc"}
+        - {src: "{{ playbook_dir }}/files/.tmux.conf", dest: "{{ home_dir }}/.tmux.conf"}
+        - {src: "{{ playbook_dir }}/files/powerline/config.json", dest: "{{ home_dir }}/.config/powerline/config.json"}
+        - {src: "{{ playbook_dir }}/files/konsole/konsolerc", dest: "{{ home_dir }}/.config/konsolerc"}
+        - {src: "{{ playbook_dir }}/files/konsole/main.profile", dest: "{{ home_dir }}/.local/share/konsole/main.profile"}
     - name: install vim-plug
       get_url:
         url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
