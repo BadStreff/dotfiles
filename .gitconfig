@@ -1,3 +1,5 @@
 [user]
 	name = Adam Furbee
 	email = adam.furbee@shsu.edu
+[url "git@github.com:"]
+	insteadOf = https://github.com/

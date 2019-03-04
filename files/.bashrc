@@ -41,3 +41,8 @@ function start_tmux() {
     fi
 }
 start_tmux
+
+# enable vault autocompletion if installed
+if command -v vault>/dev/null; then
+  complete -C ~/.local/bin/vault vault
+fi
