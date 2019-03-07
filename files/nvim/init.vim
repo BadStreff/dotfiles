@@ -41,6 +41,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <Space> za
 nnoremap <leader>l :ls<CR>:b<space>
+nnoremap <LeftMouse> ma<LeftMouse>`a
 
 " global settings
 syntax on                      " enable syntax highlighting
