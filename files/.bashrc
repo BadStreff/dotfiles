@@ -5,8 +5,10 @@ if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
+# export GOROOT=/usr/local/go
+# export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export PATH=$GOPATH/bin:$PATH
 export EDITOR=~/.local/bin/nvim
 
 # setup nvim aliases
@@ -41,6 +43,17 @@ function start_tmux() {
     fi
 }
 start_tmux
+
+# set tmux pane name to ssh host
+ssh() {
+    if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux: server" ]; then
+        tmux rename-window "$(echo $* | cut -d . -f 1)"
+        command ssh "$@"
+        tmux set-window-option automatic-rename "on" 1>/dev/null
+    else
+        command ssh "$@"
+    fi
+}
 
 # enable vault autocompletion if installed
 if command -v vault>/dev/null; then
