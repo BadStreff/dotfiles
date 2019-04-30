@@ -9,11 +9,9 @@ Plug 'airblade/vim-gitgutter'
 " additional functionality
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/nerdtree'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'ervandew/supertab'
 
 " language plugins
@@ -21,9 +19,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-go'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'pprovost/vim-ps1'
 Plug 'pearofducks/ansible-vim'
-Plug 'w0rp/ale' " linting
+Plug 'w0rp/ale'
 call plug#end()
 
 " deoplete enable
@@ -83,20 +80,3 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " supertab settings
 let g:SuperTabDefaultCompletionType = "<c-n>"
-
-" vim-multiple-cursors settings
-let g:multi_cursor_exit_from_insert_mode=0
-function! Multiple_cursors_before()
-    if exists('*deoplete#disable')
-        exe 'call deoplete#disable()'
-    elseif exists(':NeoCompleteLock') == 2
-        exe 'NeoCompleteLock'
-    endif
-endfunction
-function! Multiple_cursors_after()
-    if exists('*deoplete#toggle')
-        exe 'call deoplete#toggle()'
-    elseif exists(':NeoCompleteUnlock') == 2
-        exe 'NeoCompleteUnlock'
-    endif
-endfunction
