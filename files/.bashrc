@@ -8,7 +8,7 @@ fi
 # export GOROOT=/usr/local/go
 # export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
+export PATH=$GOPATH/bin:$HOME/.local/bin:/usr/local/go/bin:$PATH
 export EDITOR=~/.local/bin/nvim
 
 # setup nvim aliases

@@ -81,3 +81,5 @@ nmap <leader>ne :NERDTree<cr>
 
 " supertab settings
 let g:SuperTabDefaultCompletionType = "<c-n>"
+" vim-go
+let g:go_def_mode='gopls'
